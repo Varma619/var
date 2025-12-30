@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+}
+
+.box{
+  max-width:360px;
+  padding:20px;
+}
+
+button{
+  padding:10px 22px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(255,77,109,0.4);
+  transition:0.3s;
+}
+button:hover{
+  transform:scale(1.05);
+}
+
+.hidden{ display:none; }
+
+/* Fade + Slide animation */
+.page{
+  animation:slideFade 0.8s ease;
+}
+
+@keyframes slideFade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* Floating hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  animation:float 5s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(0); opacity:1;}
+  to{transform:translateY(-100vh); opacity:0;}
+}
+
+/* Book Style */
+.book{
+  background:#fff;
+  color:#000;
+  padding:25px;
+  border-radius:15px;
+  animation:bookOpen 1s ease;
+}
+
+@keyframes bookOpen{
+  from{transform:scaleX(0); opacity:0;}
+  to{transform:scaleX(1); opacity:1;}
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+
+  <div id="page1" class="page">
+    <h2>My Love ❤️</h2>
+    <p>Small surprise for you 😊</p>
+    <button onclick="nextPage(1)">Next</button>
+  </div>
+
+  <div id="page2" class="page hidden">
+    <p>Depression 😔</p>
+    <p>Tension 😟</p>
+    <p>Sadness 😞</p>
+    <p>Work 😓</p>
+    <button onclick="nextPage(2)">Remove All</button>
+  </div>
+
+  <div id="page3" class="page hidden">
+    <h3>🎁 Gift</h3>
+    <p>Click the gift box</p>
+    <button onclick="nextPage(3)">Open Gift</button>
+  </div>
+
+  <div id="page4" class="page hidden">
+    <h2>🎉 Happy New Year My Love 🎉</h2>
+    <button onclick="nextPage(4); startHearts()">Open Book 📖</button>
+  </div>
+
+  <!-- Book Page 1 -->
+  <div id="page5" class="page hidden book">
+    <h3>📖 Page 1</h3>
+    <p>
+      “Ee prapancham lo chala mandi untaru,<br>
+      kani na world motham nuvve ❤️<br><br>
+      Na smile start ayedhi nee peru tho.”
+    </p>
+    <button onclick="nextPage(5)">Next ➡️</button>
+  </div>
+
+  <!-- Book Page 2 -->
+  <div id="page6" class="page hidden book">
+    <h3>📖 Page 2</h3>
+    <p>
+      “Nenu weak ayinappudu,<br>
+      strong ga feel cheyinchindhi nuvve 💪❤️<br><br>
+      Na badha lo kuda nee thought smile techindhi.”
+    </p>
+    <button onclick="nextPage(6)">Next ➡️</button>
+  </div>
+
+  <!-- Book Page 3 -->
+  <div id="page7" class="page hidden book">
+    <h3>📖 Page 3</h3>
+    <p>
+      “Ee New Year lo oka promise 💍<br><br>
+      Nee happiness na responsibility,<br>
+      nee tears na failure,<br>
+      nee smile na success ❤️”
+    </p>
+  </div>
+
+</div>
+
+<script>
+function nextPage(n){
+  document.getElementById("page"+n).classList.add("hidden");
+  document.getElementById("page"+(n+1)).classList.remove("hidden");
+}
+
+// Floating hearts generator
+function startHearts(){
+  setInterval(()=>{
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(15+Math.random()*20)+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),5000);
+  },500);
+}
+</script>
+
+</body>
+</html>
